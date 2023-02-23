@@ -1,4 +1,4 @@
-import { DeliveryMethod } from "@shopify/shopify-api";
+import { DeliveryMethod } from '@shopify/shopify-api';
 
 export default {
   /**
@@ -9,9 +9,15 @@ export default {
    */
   CUSTOMERS_DATA_REQUEST: {
     deliveryMethod: DeliveryMethod.Http,
-    callbackUrl: "/api/webhooks",
+    callbackUrl: '/api/webhooks',
     callback: async (topic, shop, body, webhookId) => {
       const payload = JSON.parse(body);
+      console.log('payload', {
+        topic,
+        shop,
+        body,
+        webhookId,
+      });
       // Payload has the following shape:
       // {
       //   "shop_id": 954889,
@@ -41,9 +47,15 @@ export default {
    */
   CUSTOMERS_REDACT: {
     deliveryMethod: DeliveryMethod.Http,
-    callbackUrl: "/api/webhooks",
+    callbackUrl: '/api/webhooks',
     callback: async (topic, shop, body, webhookId) => {
       const payload = JSON.parse(body);
+      console.log('payload', {
+        topic,
+        shop,
+        body,
+        webhookId,
+      });
       // Payload has the following shape:
       // {
       //   "shop_id": 954889,
@@ -70,14 +82,54 @@ export default {
    */
   SHOP_REDACT: {
     deliveryMethod: DeliveryMethod.Http,
-    callbackUrl: "/api/webhooks",
+    callbackUrl: '/api/webhooks',
     callback: async (topic, shop, body, webhookId) => {
       const payload = JSON.parse(body);
+      console.log('payload', {
+        topic,
+        shop,
+        body,
+        webhookId,
+      });
       // Payload has the following shape:
       // {
       //   "shop_id": 954889,
       //   "shop_domain": "{shop}.myshopify.com"
       // }
+    },
+  },
+
+  PRODUCTS_UPDATE: {
+    deliveryMethod: DeliveryMethod.Http,
+    callbackUrl: '/api/webhooks',
+    callback: async (topic, shop, body, webhookId) => {
+      const payload = JSON.parse(body);
+      console.log('payload', {
+        topic,
+        shop,
+        body,
+        webhookId,
+      });
+      // Payload has the following shape:
+      // {
+      //   "shop_id": 954889,
+      //   "shop_domain": "{shop}.myshopify.com"
+      // }
+    },
+  },
+
+  ORDER_CREATE: {
+    deliveryMethod: DeliveryMethod.Http,
+    callbackUrl: '/api/webhooks',
+    callback: async (topic, shop, body, webhookId) => {
+      const payload = JSON.parse(body);
+      console.log('payload', {
+        topic,
+        shop,
+        body,
+        webhookId,
+      });
+      // remove shop data
     },
   },
 };
